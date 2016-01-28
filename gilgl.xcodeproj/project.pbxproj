@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		92FAA1C71C59EDC6001CB1F0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92FAA1C61C59EDC6001CB1F0 /* main.cpp */; };
+		92FAA1CE1C59EE0F001CB1F0 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92FAA1CD1C59EE0F001CB1F0 /* OpenGL.framework */; };
+		92FAA1DA1C5A08BA001CB1F0 /* libglfw3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 92FAA1D91C5A08BA001CB1F0 /* libglfw3.3.1.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		92FAA1C31C59EDC6001CB1F0 /* gilgl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gilgl; sourceTree = BUILT_PRODUCTS_DIR; };
 		92FAA1C61C59EDC6001CB1F0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		92FAA1CD1C59EE0F001CB1F0 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		92FAA1D91C5A08BA001CB1F0 /* libglfw3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.3.1.dylib; path = ../../../../../usr/local/Cellar/glfw3/3.1.2/lib/libglfw3.3.1.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92FAA1DA1C5A08BA001CB1F0 /* libglfw3.3.1.dylib in Frameworks */,
+				92FAA1CE1C59EE0F001CB1F0 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +47,8 @@
 		92FAA1BA1C59EDC6001CB1F0 = {
 			isa = PBXGroup;
 			children = (
+				92FAA1D91C5A08BA001CB1F0 /* libglfw3.3.1.dylib */,
+				92FAA1CD1C59EE0F001CB1F0 /* OpenGL.framework */,
 				92FAA1C51C59EDC6001CB1F0 /* gilgl */,
 				92FAA1C41C59EDC6001CB1F0 /* Products */,
 			);
@@ -207,6 +215,11 @@
 		92FAA1CB1C59EDC6001CB1F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"HEADER_SEARCH_PATHS[arch=*]" = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glfw3/3.1.2/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -214,6 +227,11 @@
 		92FAA1CC1C59EDC6001CB1F0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"HEADER_SEARCH_PATHS[arch=*]" = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glfw3/3.1.2/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
