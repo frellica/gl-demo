@@ -10,6 +10,7 @@
 		92FAA1C71C59EDC6001CB1F0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92FAA1C61C59EDC6001CB1F0 /* main.cpp */; };
 		92FAA1CE1C59EE0F001CB1F0 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92FAA1CD1C59EE0F001CB1F0 /* OpenGL.framework */; };
 		92FAA1DA1C5A08BA001CB1F0 /* libglfw3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 92FAA1D91C5A08BA001CB1F0 /* libglfw3.3.1.dylib */; };
+		92FAA1E91C5B5231001CB1F0 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92FAA1E71C5B5231001CB1F0 /* shader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,12 @@
 		92FAA1C61C59EDC6001CB1F0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		92FAA1CD1C59EE0F001CB1F0 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		92FAA1D91C5A08BA001CB1F0 /* libglfw3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.3.1.dylib; path = ../../../../../usr/local/Cellar/glfw3/3.1.2/lib/libglfw3.3.1.dylib; sourceTree = "<group>"; };
+		92FAA1DB1C5B4094001CB1F0 /* GLFW */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GLFW; path = ../../../../../usr/local/Cellar/glfw3/3.1.2/include/GLFW; sourceTree = "<group>"; };
+		92FAA1DC1C5B4186001CB1F0 /* gilgl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gilgl.h; sourceTree = "<group>"; };
+		92FAA1E71C5B5231001CB1F0 /* shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = shader.cpp; path = common/shader.cpp; sourceTree = "<group>"; };
+		92FAA1E81C5B5231001CB1F0 /* shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = shader.hpp; path = common/shader.hpp; sourceTree = "<group>"; };
+		92FAA1ED1C5F40DD001CB1F0 /* SimpleFragmentShader.fragmentshader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SimpleFragmentShader.fragmentshader; path = fragment/SimpleFragmentShader.fragmentshader; sourceTree = "<group>"; };
+		92FAA1EE1C5F40DD001CB1F0 /* SimpleVertexShader.vertexshader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SimpleVertexShader.vertexshader; path = fragment/SimpleVertexShader.vertexshader; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +54,7 @@
 		92FAA1BA1C59EDC6001CB1F0 = {
 			isa = PBXGroup;
 			children = (
+				92FAA1DB1C5B4094001CB1F0 /* GLFW */,
 				92FAA1D91C5A08BA001CB1F0 /* libglfw3.3.1.dylib */,
 				92FAA1CD1C59EE0F001CB1F0 /* OpenGL.framework */,
 				92FAA1C51C59EDC6001CB1F0 /* gilgl */,
@@ -65,9 +73,30 @@
 		92FAA1C51C59EDC6001CB1F0 /* gilgl */ = {
 			isa = PBXGroup;
 			children = (
+				92FAA1E41C5B4D34001CB1F0 /* fragment */,
+				92FAA1DD1C5B48A1001CB1F0 /* common */,
 				92FAA1C61C59EDC6001CB1F0 /* main.cpp */,
+				92FAA1DC1C5B4186001CB1F0 /* gilgl.h */,
 			);
 			path = gilgl;
+			sourceTree = "<group>";
+		};
+		92FAA1DD1C5B48A1001CB1F0 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				92FAA1E71C5B5231001CB1F0 /* shader.cpp */,
+				92FAA1E81C5B5231001CB1F0 /* shader.hpp */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
+		92FAA1E41C5B4D34001CB1F0 /* fragment */ = {
+			isa = PBXGroup;
+			children = (
+				92FAA1ED1C5F40DD001CB1F0 /* SimpleFragmentShader.fragmentshader */,
+				92FAA1EE1C5F40DD001CB1F0 /* SimpleVertexShader.vertexshader */,
+			);
+			name = fragment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92FAA1E91C5B5231001CB1F0 /* shader.cpp in Sources */,
 				92FAA1C71C59EDC6001CB1F0 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,9 +199,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.vertexshader *.fragmentshader fragment";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				New_Setting = "";
 				ONLY_ACTIVE_ARCH = YES;
+				REZ_SEARCH_PATHS = ./;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -206,8 +239,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.vertexshader *.fragmentshader fragment";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				New_Setting = "";
+				REZ_SEARCH_PATHS = ./;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -255,6 +291,7 @@
 				92FAA1CC1C59EDC6001CB1F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
