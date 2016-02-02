@@ -17,6 +17,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "common/shader.hpp"
+#include "common/controls.hpp"
 void fillColorVec(GLfloat* colorBufferData);
 
 #endif /* gilgl_h */

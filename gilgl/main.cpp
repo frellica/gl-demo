@@ -67,6 +67,7 @@ int main(int argc, char ** argv) {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     
     window = glfwCreateWindow(1024, 768, "gl demo 4", NULL, NULL);
+    
     if (window == NULL) {
         fprintf(stderr, "Failed to open GLFW window\n");
         glfwTerminate();
@@ -77,7 +78,10 @@ int main(int argc, char ** argv) {
 
     
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-   
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    // Set the mouse at the center of the screen
+    glfwPollEvents();
+    glfwSetCursorPos(window, 1024/2, 768/2);
     
     // Dark blue background
     glClearColor(0.6f, 0.6f, 0.8f, 1.0f);
@@ -86,6 +90,8 @@ int main(int argc, char ** argv) {
     glEnable(GL_DEPTH_TEST);
     // Accept fragment if it closer to the camera than the former one
     glDepthFunc(GL_LESS);
+    // Cull triangles which normal is not towards the camera
+    glEnable(GL_CULL_FACE);
     
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
@@ -95,7 +101,7 @@ int main(int argc, char ** argv) {
     GLuint matrixID = glGetUniformLocation(programID, "MVP");
     glm::mat4 Projection = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
 //    glm::mat4 Projection = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,0.0f,100.0f);
-    glm::mat4 View = glm::lookAt(glm::vec3(4, 3, 2), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+    glm::mat4 View = glm::lookAt(glm::vec3(3, 3, 2), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
     glm::mat4 Model = glm::mat4(1.0f);
     glm::mat4 MVP = Projection * View * Model;
     
@@ -118,6 +124,14 @@ int main(int argc, char ** argv) {
     do {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUseProgram(programID);
+        
+        // Compute the MVP matrix from keyboard and mouse input
+        computeMatricesFromInputs(window);
+        glm::mat4 ProjectionMatrix = getProjectionMatrix();
+        glm::mat4 ViewMatrix = getViewMatrix();
+        glm::mat4 ModelMatrix = glm::mat4(1.0);
+        glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
+        
         glUniformMatrix4fv(matrixID, 1, GL_FALSE, &MVP[0][0]);
         glEnableVertexAttribArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -128,6 +142,9 @@ int main(int argc, char ** argv) {
 
         
         glDrawArrays(GL_TRIANGLES, 0, 4 * 3 * 3);
+        
+        glDisableVertexAttribArray(0);
+        glDisableVertexAttribArray(1);
         
         glfwSwapBuffers(window);
         glfwPollEvents();

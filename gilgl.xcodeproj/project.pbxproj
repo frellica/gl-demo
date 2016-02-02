@@ -11,6 +11,7 @@
 		92FAA1CE1C59EE0F001CB1F0 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92FAA1CD1C59EE0F001CB1F0 /* OpenGL.framework */; };
 		92FAA1DA1C5A08BA001CB1F0 /* libglfw3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 92FAA1D91C5A08BA001CB1F0 /* libglfw3.3.1.dylib */; };
 		92FAA1E91C5B5231001CB1F0 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92FAA1E71C5B5231001CB1F0 /* shader.cpp */; };
+		92FAA1F71C604FC5001CB1F0 /* controls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92FAA1F51C604FC5001CB1F0 /* controls.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +37,8 @@
 		92FAA1F01C5F4B5C001CB1F0 /* SimpleFragmentShader.fsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = SimpleFragmentShader.fsh; path = fragment/SimpleFragmentShader.fsh; sourceTree = "<group>"; };
 		92FAA1F11C5F4B5C001CB1F0 /* SimpleVertexShader.vsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = SimpleVertexShader.vsh; path = fragment/SimpleVertexShader.vsh; sourceTree = "<group>"; };
 		92FAA1F41C5F5599001CB1F0 /* SimpleTransform.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = SimpleTransform.vsh; path = fragment/SimpleTransform.vsh; sourceTree = "<group>"; };
+		92FAA1F51C604FC5001CB1F0 /* controls.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = controls.cpp; path = common/controls.cpp; sourceTree = "<group>"; };
+		92FAA1F61C604FC5001CB1F0 /* controls.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = controls.hpp; path = common/controls.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 			children = (
 				92FAA1E71C5B5231001CB1F0 /* shader.cpp */,
 				92FAA1E81C5B5231001CB1F0 /* shader.hpp */,
+				92FAA1F51C604FC5001CB1F0 /* controls.cpp */,
+				92FAA1F61C604FC5001CB1F0 /* controls.hpp */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 			files = (
 				92FAA1E91C5B5231001CB1F0 /* shader.cpp in Sources */,
 				92FAA1C71C59EDC6001CB1F0 /* main.cpp in Sources */,
+				92FAA1F71C604FC5001CB1F0 /* controls.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
